@@ -1,0 +1,29 @@
+.row.placeholders
+    .col-md-12.col-sm-offset-0.main
+        .sub-header Cloud Lists
+            .row.placeholders
+                button(type='button', ng-csv='cloudArray', csv-header="['Cloud Provider', 'Total Number of VM', 'Windows VM', 'Linux VM']" filename='test.csv') Export
+            .table-responsive
+                table.table.table-hover.table-bordered.table-striped( st-table='cloudArray')
+                    thead
+                        tr
+                            th #
+                            th Cloud Names
+                                button.btn.btn-default(type='button', aria-label='Right Align' st-sort="cloudName")
+                                    span.glyphicon.glyphicon-sort(aria-hidden='true')
+                            th Total Number of VM
+                                button.btn.btn-default(type='button', aria-label='Right Align' st-sort="toNumOfVM")
+                                    span.glyphicon.glyphicon-sort(aria-hidden='true')
+                            th Windows VM
+                                button.btn.btn-default(type='button', aria-label='Right Align' st-sort="numOfWindows")
+                                    span.glyphicon.glyphicon-sort(aria-hidden='true')
+                            th Linux VM
+                                button.btn.btn-default(type='button', aria-label='Right Align' st-sort="numOfLinux")
+                                    span.glyphicon.glyphicon-sort(aria-hidden='true')
+                    tbody(id="hor-zebra")
+                        tr(ng-repeat='cloud in cloudArray')
+                            td {{ cloudArray.indexOf(cloud) + 1}}
+                            td {{cloud.cloudName}}
+                            td {{cloud.toNumOfVM}}
+                            td {{cloud.numOfWindows}}
+                            td {{cloud.numOfLinux}}

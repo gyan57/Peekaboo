@@ -1,0 +1,10 @@
+block content
+    body
+        .container-fluid
+            .row
+                .col-md-12.col-sm-offset-0.main
+                    tabset
+                        tab(title='DashBoard' template-url="partials/cloudCharts" )
+                        tab(title='Cumulative Details' template-url="partials/cloudTables")
+                        tab(title='VM Provisioning History' template-url="partials/instanceProvChart")
+

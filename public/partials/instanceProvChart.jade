@@ -1,0 +1,7 @@
+.page-header Dashboard
+    .row.placeholders
+        .col-md-3.col-sm-1.placeholder
+            .panel.panel-default
+                .panel-heading {{barChartDetails.name}}
+                .panel-body
+                    canvas#bar.chart.chart-bar(chart-data='barChartDetails.data' chart-labels='barChartDetails.label' chart-series='barChartDetails.series' chart-legend=false chart-options='barChartDetails.option')

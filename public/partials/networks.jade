@@ -1,0 +1,43 @@
+//
+   Created by Gkumar on 4/18/16.
+block content
+    body
+    .col-md-12.col-md-offset-0.main
+        h1.sub-header Networks Lists {{ finalNetworks.length }}
+        .table-responsive
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th #
+                        th Network Name
+                        th IP Address
+                        th Subnet
+                        th Gateway
+                        th No of Used IP
+                        th Remaining IP
+                        th Cloud Provider
+                    th
+                    th
+                        input.form-control(type='text', placeholder='Network Name', ng-model='data.networkName')
+                    th
+                        input.form-control(type='text', placeholder='IP Address', ng-model='data.ipAddress')
+                    th
+                        input.form-control(type='text', placeholder='Subnet', ng-model='data.subnet')
+                    th
+                        input.form-control(type='text', placeholder='Gateway', ng-model='data.gateway')
+                    th
+                    th
+                    th
+                        input.form-control(type='text', placeholder='Cloud', ng-model='data.cloud')
+                tbody(id="hor-zebra")
+                    tr(ng-repeat='network in networks | filter: data as finalNetworks track by $index')
+                        td {{finalNetworks.indexOf(network) + 1}}
+                        td {{network.networkName}}
+                        td {{network.ipAddress}}
+                        td {{network.subnet}}
+                        td {{network.gateway}}
+                        td {{network.noOfUsedIP}}
+                        td {{network.remainingIP}}
+                        td {{network.cloud}}
+
+

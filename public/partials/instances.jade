@@ -1,0 +1,52 @@
+//
+   Created by Gkumar on 3/12/16.
+block content
+    body
+    .col-md-12.col-md-offset-0.main
+        h1.sub-header Instance Lists {{ finalInstances.length }}
+            button(type='button', ng-csv='finalInstances', csv-header="['Hostname', 'OSType', 'State', 'IP Address', 'Project','Environment','Date','User','Cloud']" filename='test.csv') Export
+        .table-responsive
+            table.table.table-hover.table-bordered.table-striped(st-table='instances')
+                thead
+                    tr
+                        th #
+                        th Hostname
+                        th OS Type
+                        th State
+                        th IP
+                        th Project
+                        th Environment
+                        th VM Start date
+                        th VM started by
+                        th Cloud Provider
+                    th
+                    th
+                        input.form-control(type='text', placeholder='Hostname', ng-model='data.hostname')
+                    th
+                        input.form-control(type='text', placeholder='OS', ng-model='data.OSType')
+                    th
+                        input.form-control(type='text', placeholder='State', ng-model='data.state')
+                    th
+                        input.form-control(type='text', placeholder='IP Address', ng-model='data.ipAddress')
+                    th
+                        input.form-control(type='text', placeholder='Project', ng-model='data.project')
+                    th
+                        input.form-control(type='text', placeholder='Env', ng-model='data.env')
+                    th
+                        input.form-control(type='text', placeholder='Date', ng-model='data.startTime')
+                    th
+                        input.form-control(type='text', placeholder='User', ng-model='data.userName')
+                    th
+                        input.form-control(type='text', placeholder='Cloud', ng-model='data.cloud')
+                tbody(id="hor-zebra")
+                    tr(ng-repeat='instance in instances | filter: data as finalInstances track by $index')
+                        td {{finalInstances.indexOf(instance) + 1}}
+                        td {{instance.hostname}}
+                        td {{instance.OSType}}
+                        td {{instance.state}}
+                        td {{instance.ipAddress}}
+                        td {{instance.project}}
+                        td {{instance.env}}
+                        td {{instance.startTime}}
+                        td {{instance.userName}}
+                        td {{instance.cloud}}

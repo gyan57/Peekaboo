@@ -1,0 +1,14 @@
+.page-header Cumulative Details
+    .row
+        .col-md-3.col-sm-1.placeholder(ng-repeat='chart in pieChartDetails' ng-if="$index < 2")
+            .panel.panel-default
+                .panel-heading {{chart.name}}
+                .panel-body
+                    canvas#pie1.chart.chart-pie(chart-data='chart.data', chart-labels='chart.label' chart-legend=true chart-options='chart.option',chart-colours='chart.color')
+.page-header Slpit by VM Status
+    .row
+        .col-md-3.col-sm-1.placeholder(ng-repeat='chart in pieChartDetails' ng-if="$index > 1")
+            .panel.panel-default
+                .panel-heading {{chart.name}}
+                .panel-body
+                    canvas#pie2.chart.chart-pie(chart-data='chart.data', chart-labels='chart.label' chart-legend=true chart-options='chart.option',chart-colours='chart.color')

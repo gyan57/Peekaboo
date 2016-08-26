@@ -1,0 +1,44 @@
+<changelist name="Initial_Commit" date="1472243464194" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/shelved.patch" />
+  <option name="DESCRIPTION" value="Initial Commit" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/request/node_modules/hawk/images/hawk.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/hawk.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/request/node_modules/hawk/node_modules/boom/images/boom.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/boom.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/request/node_modules/hawk/images/logo.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/logo.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/angular-ui-grid/ui-grid.ttf" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/ui-grid.ttf" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/angular-ui-grid/node_modules/angular/angular.min.js.gzip" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/angular.min.js.gzip" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/angular-ui-grid/ui-grid.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/ui-grid.woff" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/angular-ui-grid/ui-grid.eot" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/ui-grid.eot" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="node_modules/request/node_modules/hawk/node_modules/hoek/images/hoek.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Initial_Commit/hoek.png" />
+  </binary>
+</changelist>
