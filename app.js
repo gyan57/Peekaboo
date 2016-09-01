@@ -66,7 +66,7 @@ app.get('/instance/list', instance.instances);
 //Service API
 app.get('/network/list', networks.networks);
 
-app.get('/auditlog', auditlog.auditlog);
+//app.get('/auditlog', auditlog.auditlog);
 
 // everything handled by this route
 app.get('*', function(req, res){
