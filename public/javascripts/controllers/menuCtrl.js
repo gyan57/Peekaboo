@@ -23,7 +23,11 @@
             {
                 menuName: 'Networks',
                 menuLinks: '/networks'
-            }];
+            },
+	    {
+		menuName: 'AuditLog',
+		menuLinks: '/auditlog'
+	    }];
         //Set those menus to active
         $scope.setActive = function (menuItem) {
             $scope.activeMenu = menuItem;

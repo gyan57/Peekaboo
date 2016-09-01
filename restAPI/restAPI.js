@@ -6,28 +6,27 @@ var querystring = require('querystring');
 var https = require('https');
 var request = require('request');
 
-var host = 'https://172.16.27.128/';
-var headers = {
+var host = 'https://192.168.108.190:8443/';
+var headers1 = {
     'Accept': 'application/json'
 };
-var auth = {
+var auth1 = {
     username: 'admin',
-    password: 'M3sh@dmin!'
+    password: 'x0cloud'
 };
 
 
 var restAPI = {
 
     performRequest: function (endPoint, callback) {
-
         var options = {
             method: 'GET',
-            auth: auth,
+            auth: auth1,
             rejectUnauthorized: false,
             uri: host + endPoint,
-            headers: headers
+            headers: headers1
         };
-
+	console.log('making request');	
         request(options, function (err, res, body) {
             callback(body);
         });

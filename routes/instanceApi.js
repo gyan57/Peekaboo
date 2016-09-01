@@ -7,8 +7,10 @@ var instanceList = require('../mysql/instanceList.js');
 exports.instances = function(req, res, next) {
 
     instanceList.instanceList.getInstanceList(function (instances) {
-
+        
         res.json(instances);
-
+        
     })
 };
+
+
