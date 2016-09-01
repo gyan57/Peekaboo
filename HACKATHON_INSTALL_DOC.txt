@@ -1,0 +1,32 @@
+SETUP OF THE PROJECT
+
+get project from github
+git clone https://github.com/gyan57/Peekaboo peekaboo
+
+download and install
+node-v4.5.0.pkg
+from website
+
+=>
+Node.js was installed at     /usr/local/bin/node
+npm was installed at         /usr/local/bin/npm
+
+
+> cd /Users/nmougin/git/peekaboo
+> npm install
+> npm install pug -save
+
+> vi app.js
+and comment this line
+//app.get('/auditlog', auditlog.auditlog);
+
+if needs, create folder and add file :
+/Users/nmougin/git/peekaboo/public/javascripts/ng-csv/build/ng-csv.js
+
+to start the server:
+> cd /Users/nmougin/git/peekaboo
+> npm start
+
+
+to log in
+http://localhost:3000/
