@@ -1,0 +1,199 @@
+<html>
+<head>
+ <script src="jsonresponse.js"></script> 
+<script>
+var input;
+var output;
+var date_date;
+var date_string;
+var new_date;
+
+function initialize() {
+	date_date = new Date();
+	date_string = date_to_string(date_date);
+	new_date    = string_to_date(date_string);
+	new_string  = date_to_string(new_date);
+	text1.value = date_date;
+	text2.value = date_string;
+	text3.value = new_date;
+	text4.value = new_string;
+}//end function
+
+function execute() {
+	date_date   = date_to_date(date_date, 1);
+	date_string = date_to_string(date_date);
+	new_date    = string_to_date(date_string);
+	new_string  = date_to_string(new_date);
+	new_new_date    = date_to_date(date_date, 1);
+	new_new_string  = string_to_string(date_string, 1);
+
+	text1.value = date_date;
+	text2.value = date_string;
+	text3.value = new_date;
+	text4.value = new_string;
+	text5.value = new_new_date;
+	text6.value = new_new_string;
+	text7.value = date_date.getDay();
+	text8.value = string_previous_sunday(date_string) ;
+}//end function
+
+/////////////////////////////////////////////////////////
+// FUNCTIONS CONVERSIONS DATES USING FORMAT "YYYY-MM-DD"
+/////////////////////////////////////////////////////////
+
+//extracts YYYY-MM-DD string from another one containing YYYY-MM-DD or YYYY/MM/DD
+function parse_date_string(string_date) {
+	var result = string_date;
+	//replace all / by -
+	result = result.replace(new RegExp("/", "g"), "-");
+	//keep the matching part of the string
+	result = result.match("[0-9]{4}-[0-9]{2}-[0-9]{2}");
+	return result;
+}//end function
+
+//from object to string (not a bijection : time becomes 00:00:00)
+function date_to_string(date_date) {
+	var YYYY   = "" + (date_date.getFullYear()    );
+	var MM     = "" + (date_date.getMonth() +    1);
+	var DD     = "" + (date_date.getDate()        );
+	if (MM.length == 1) MM = "0" + MM;
+	if (DD.length == 1) DD = "0" + DD;
+	var new_date_string = YYYY + "-" + MM + "-" + DD;
+	return new_date_string;
+}//end function
+
+//from string to object - time set to 00:00:00
+function string_to_date(date_string) {
+	var YYYY = eval(date_string.split("-")[0]);
+	var MM   = eval(date_string.split("-")[1]);
+	var DD   = eval(date_string.split("-")[2]);
+	var new_date_string = YYYY + "-" + MM + "-" + DD;
+	var new_date_date   = new Date(new_date_string);
+	new_date_date = new Date(new_date_date.setDate(new_date_date.getDate() + 1));
+	new_date_date.setMinutes(0);
+	new_date_date.setHours  (0);
+	new_date_date.setSeconds(0);
+	return new_date_date;
+}//end function
+
+// new date string from another date string and an offset num of days
+function string_to_string(date_string, num_days) {
+	var new_date_date   = string_to_date(date_string);
+        new_date_date   = date_to_date(new_date_date, num_days);
+	var new_date_string = date_to_string(new_date_date);
+	return new_date_string;
+}//end function
+
+// new date from another date and an offset num of days
+function date_to_date(date_date, num_days) {
+	var new_date_date = new Date(date_date);
+	new_date_date = new Date(new_date_date.setDate(new_date_date.getDate() + num_days));
+	return new_date_date;
+}//end function
+
+// return date of previous sunday (current day not included)
+function string_previous_sunday(string_date) {
+	var date_date     = string_to_date(string_date);
+	var date_result   = date_previous_sunday(date_date);
+	var result        = date_to_string(date_result);
+	return result;
+}//end function
+
+// return date of previous sunday (or current if sunday)
+function date_previous_sunday(date_date) {
+	var result = date_to_date(date_date, 0);
+	while(result.getDay() != 0) {
+		result = date_to_date(result, -1);
+	}//end while
+	return result;
+}//end function
+
+// return date of previous sunday (or current if sunday)
+function string_previous_sunday(string_date) {
+	var date_date     = string_to_date(string_date);
+	var date_result   = date_previous_sunday(date_date);
+	var string_result = date_to_string(date_result);
+	return string_result;
+}//end function
+
+//returns true if the date is in the range (begin and end included)
+function is_date_in_range(string_date, string_begin, string_end) {
+	var date       = string_to_date(string_date ).getTime();
+	var date_begin = string_to_date(string_begin).getTime();
+	var date_end   = string_to_date(string_end  ).getTime();
+	var result = false;
+	if ((date >= date_begin) && (date <= date_end)) {
+		result = true
+	}//end if
+	return result;
+}//end function
+
+//returns array of the days of the week (sunday to saturday) including the data
+function array_string_days_of_week(string_date) {
+	var string_date_begin = string_previous_sunday(string_date);
+	var array_string_date = [];
+	for (var i = 0; i <= 7; i++) {
+		array_string_date.push(string_to_string(string_date_begin, i));
+	}//end for
+	return array_string_date;
+}//end function
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+
+// real code is to insert in
+// ~/git/peekaboo/public/javascripts/controllers/overviewCtrl.js
+
+function filter() {
+	var datestring1 = textdate1.value;
+	var datestring2 = textdate2.value;
+	var result = "";
+	result += "------------------------------------------------------------\r\n";
+	result += "Date range       : " + datestring1 + " - " + datestring2 + "\r\n";
+	result += "records total    : " + jsonresponse.length + "\r\n";
+
+	filteredresult = [];
+	for (i=0; i<jsonresponse.length; i++) {
+		record = jsonresponse[i];
+		state  = record.state == 2;
+		start  = record.startTime.substring(0,10);
+		extra  = "";
+		if (record.state == 2) {
+			//vm is running
+			filteredresult.push(record);
+		}//end if
+	}//end for
+	result += "records matching : " + filteredresult.length + "\r\n";
+	result += "------------------------------------------------------------\r\n";
+	text.innerHTML = result;
+}//end function
+
+//"123456789".match("^[0-9]{9}$")
+//"123456789".match("(123).*(789)")          ["123456789", "123", "789"]
+
+</script>
+</head>
+<body onload="initialize();">
+
+<hr/>
+<h1>TEST DATES FUNCTIONS</h1>
+<input type="text"   id="text1" />current date<br/>
+<input type="text"   id="text2" />current date<br/>
+<input type="text"   id="text3" />current date<br/>
+<input type="text"   id="text4" />current date<br/>
+<input type="text"   id="text5" />next date (day + 1)<br/>
+<input type="text"   id="text6" />next date (day + 1)<br/>
+<input type="text"   id="text7" />day of the week<br/>
+<input type="text"   id="text8" />last sunday was<br/>
+<input type="button" onclick="execute();" value="execute"/><br/>
+<hr/>
+<h1>TEST FILTERING RECORDS</h1>
+<input type="text"   id="textdate1" value="2016-08-03" />date1<br/>
+<input type="text"   id="textdate2" value="2016-08-13" />date2<br/>
+<input type="button" onclick="filter();" value="filter"/><br/>
+<pre id="text">
+</pre>
+</body>
+</html>
